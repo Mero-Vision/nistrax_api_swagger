@@ -1,8 +1,8 @@
 {
     "info": {
-        "title": "Recruzen API Swagger",
+        "title": "Nistrax API Swagger",
         "version": "1.0",
-        "description": "Recruzen API documentation",
+        "description": "Nistrax API documentation",
         "termsOfService": "#",
         "license": {
             "name": "MIT",
@@ -21,7 +21,7 @@
     },
     "servers": [
         {
-            "url": "https://recruzen-api.merovision.com/",
+            "url": "https://nistrax-api.merovision.com/",
             "description": "server"
         }
     ]
