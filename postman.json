@@ -39,11 +39,6 @@
                     "key": "Accept",
                     "value": "application/json",
                     "type": "text"
-                  },
-                  {
-                    "key": "branch-id",
-                    "value": "1",
-                    "type": "text"
                   }
                 ],
                 "body": {
@@ -451,7 +446,7 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "{{url}}/api/v1/superadmin/tenants/{slug}/users",
+                  "raw": "{{url}}/api/v1/superadmin/tenants/nistrax/users",
                   "host": [
                     "{{url}}"
                   ],
@@ -460,7 +455,7 @@
                     "v1",
                     "superadmin",
                     "tenants",
-                    "{slug}",
+                    "nistrax",
                     "users"
                   ]
                 }
@@ -613,6 +608,20 @@
           "item": [
             {
               "name": "login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const response = pm.response.json()",
+                      "pm.environment.set('token', response.data.token)"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
               "request": {
                 "auth": {
                   "type": "noauth"
@@ -658,6 +667,311 @@
                     "admin",
                     "auth",
                     "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show about logged in user",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "email",
+                      "value": "hy@gmail.com",
+                      "type": "text",
+                      "uuid": "96827853-bc15-4b09-9698-d81e5a9857cf"
+                    },
+                    {
+                      "key": "password",
+                      "value": "password",
+                      "type": "text",
+                      "uuid": "766f0bbc-4566-48c1-816d-5011268b0552"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/auth/me",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "auth",
+                    "me"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Category",
+          "item": [
+            {
+              "name": "store category data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Soft Drinks\",\n    \"parent_category_id\": 1,\n    \"description\": \"Carbonated and non-carbonated soft drinks\",\n    \"icon\": \"ti-bottle\",\n    \"is_active\": true,\n    \"sort_order\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/categories",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update category",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Beverages\",\n    \"parent_category_id\": null,\n    \"description\": \"All types of drinks and beverages\",\n    \"icon\": \"ti-cup\",\n    \"is_active\": true,\n    \"sort_order\": 1,\n    \"_method\":\"PUT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/categories/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "categories",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all category data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/categories?pagination_limit&search_keyword",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "categories"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination_limit",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "search_keyword",
+                      "value": null,
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "single show category data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/categories/{slug}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "categories",
+                    "{slug}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete category",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/categories/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "categories",
+                    "{id}"
                   ]
                 }
               },

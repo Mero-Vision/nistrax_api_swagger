@@ -16,7 +16,7 @@ info:
     name: MIT
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
-  - url: https://nistrax-api.merovision.com/
+  - url: https://nistrax-api.merovision.com
     description: server
 components:
   securitySchemes:
@@ -34,6 +34,7 @@ tags:
   - name: Superadmin > Tenant/Company User
   - name: Admin
   - name: Admin > Auth
+  - name: Admin > Category
 paths:
   /api/v1/superadmin/auth/login:
     post:
@@ -60,11 +61,6 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: branch-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
       responses:
         '200':
           description: Successful response
@@ -250,7 +246,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/v1/superadmin/tenants/{slug}/users:
+  /api/v1/superadmin/tenants/nistrax/users:
     get:
       tags:
         - Superadmin > Tenant/Company User
@@ -263,16 +259,12 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: slug
-          in: path
-          schema:
-            type: string
-          required: true
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
+  /api/v1/superadmin/tenants/{slug}/users:
     post:
       tags:
         - Superadmin > Tenant/Company User
@@ -365,6 +357,190 @@ paths:
           schema:
             type: string
           example: nistrax
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/auth/me:
+    get:
+      tags:
+        - Admin > Auth
+      summary: show about logged in user
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/categories:
+    post:
+      tags:
+        - Admin > Category
+      summary: store category data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Soft Drinks
+                parent_category_id: 1
+                description: Carbonated and non-carbonated soft drinks
+                icon: ti-bottle
+                is_active: true
+                sort_order: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Category
+      summary: show all category data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/categories/{id}:
+    post:
+      tags:
+        - Admin > Category
+      summary: update category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Beverages
+                parent_category_id: null
+                description: All types of drinks and beverages
+                icon: ti-cup
+                is_active: true
+                sort_order: 1
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Category
+      summary: delete category
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/categories/{slug}:
+    get:
+      tags:
+        - Admin > Category
+      summary: single show category data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
