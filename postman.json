@@ -411,6 +411,43 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "show single company data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/superadmin/tenants/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "superadmin",
+                    "tenants",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -591,6 +628,451 @@
                     "tenants",
                     "{slug}",
                     "users"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Payment Method",
+          "item": [
+            {
+              "name": "show all payment method",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/superadmin/payment-methods",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "superadmin",
+                    "payment-methods"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store payment method",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "db927192-ae65-466d-8511-b102ed249a30"
+                    },
+                    {
+                      "key": "type",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "ae8bbc87-7388-4b59-8af1-e68739f56cd1"
+                    },
+                    {
+                      "key": "logo",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "efe87fd1-768a-4749-9f1b-b377d94f44b4"
+                    },
+                    {
+                      "key": "description",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "357f718a-f75d-42d7-98ce-9832f2a73d2c"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "224973e2-a4e9-4b9e-9fa4-5ea8da1afb2e"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "a144134c-6c29-453a-842e-c6f2bb46866a"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/superadmin/payment-methods",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "superadmin",
+                    "payment-methods"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update payment method",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "db927192-ae65-466d-8511-b102ed249a30"
+                    },
+                    {
+                      "key": "type",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "ae8bbc87-7388-4b59-8af1-e68739f56cd1"
+                    },
+                    {
+                      "key": "logo",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "efe87fd1-768a-4749-9f1b-b377d94f44b4"
+                    },
+                    {
+                      "key": "description",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "357f718a-f75d-42d7-98ce-9832f2a73d2c"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "224973e2-a4e9-4b9e-9fa4-5ea8da1afb2e"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "a144134c-6c29-453a-842e-c6f2bb46866a"
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PUT",
+                      "type": "text",
+                      "uuid": "719cd41b-227b-4dd8-86c5-9c508a78d58b"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/superadmin/payment-methods/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "superadmin",
+                    "payment-methods",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete payment method",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/superadmin/payment-methods/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "superadmin",
+                    "payment-methods",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Tenant Payment Method",
+          "item": [
+            {
+              "name": "store tenant payment method",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "Body (eSewa):\n{\n  \"payment_method_id\": 1,\n  \"is_active\": true,\n  \"sort_order\": 1,\n  \"credentials\": {\n    \"merchant_id\": \"your-merchant-id\",\n    \"secret_key\": \"your-secret-key\"\n  }\n}\n\nBody (Khalti):\n{\n  \"payment_method_id\": 2,\n  \"is_active\": true,\n  \"sort_order\": 2,\n  \"credentials\": {\n    \"public_key\": \"your-public-key\",\n    \"secret_key\": \"your-secret-key\"\n  }\n}\n\nBody (FonePay):\n{\n  \"payment_method_id\": 3,\n  \"is_active\": true,\n  \"sort_order\": 3,\n  \"credentials\": {\n    \"merchant_code\": \"your-merchant-code\",\n    \"secret_key\": \"your-secret-key\"\n  }\n}\n\nBody (Bank Transfer):\n{\n  \"payment_method_id\": 4,\n  \"is_active\": true,\n  \"sort_order\": 4,\n  \"credentials\": {\n    \"bank_name\": \"Nepal Investment Bank\",\n    \"account_name\": \"Company Name Pvt. Ltd.\",\n    \"account_number\": \"0123456789\",\n    \"branch\": \"Kathmandu\"\n  }\n}\n\nBody (Cash):\n{\n  \"payment_method_id\": 5,\n  \"is_active\": true,\n  \"sort_order\": 5,\n  \"credentials\": null\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/superadmin/tenants/{tenantid}/payment-methods",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "superadmin",
+                    "tenants",
+                    "{tenantid}",
+                    "payment-methods"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update tenent payment method",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_active\": false,\n  \"sort_order\": 3,\n  \"credentials\": {\n    \"merchant_id\": \"updated-merchant-id\",\n    \"secret_key\": \"updated-secret\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/superadmin/tenants/{tenant}/payment-methods/{tenantPaymentMethod}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "superadmin",
+                    "tenants",
+                    "{tenant}",
+                    "payment-methods",
+                    "{tenantPaymentMethod}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "remove tenent payment method",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/superadmin/tenants/{tenant}/payment-methods/{tenantPaymentMethod}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "superadmin",
+                    "tenants",
+                    "{tenant}",
+                    "payment-methods",
+                    "{tenantPaymentMethod}"
                   ]
                 }
               },
@@ -972,6 +1454,802 @@
                     "admin",
                     "categories",
                     "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Products",
+          "item": [
+            {
+              "name": "store products",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Premium Headphone",
+                      "type": "text",
+                      "uuid": "8fe67e96-7531-4e7a-ba3a-936c9008053a"
+                    },
+                    {
+                      "key": "selling_price",
+                      "value": "2999.99",
+                      "type": "text",
+                      "uuid": "304c1803-7ab6-4056-a329-ea2181bba346"
+                    },
+                    {
+                      "key": "category_id",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "5356e742-76ee-4fac-bc08-2766379e2c6a"
+                    },
+                    {
+                      "key": "description",
+                      "value": "High quality wireless headphone",
+                      "type": "text",
+                      "uuid": "5622bd8e-ed6a-4e08-b3dd-689e2491ebef"
+                    },
+                    {
+                      "key": "sku",
+                      "value": "SKU-001",
+                      "type": "text",
+                      "uuid": "7f3c1481-4f0a-4c9e-a291-64e57f0bc94b"
+                    },
+                    {
+                      "key": "barcode",
+                      "value": "123456789",
+                      "type": "text",
+                      "uuid": "f9c065f9-81ba-4709-9180-19da5cb3946f"
+                    },
+                    {
+                      "key": "cross_price",
+                      "value": "3999.99",
+                      "type": "text",
+                      "uuid": "332b9193-d4c8-4de3-98dd-94979761a668"
+                    },
+                    {
+                      "key": "cost_price",
+                      "value": "1500.00",
+                      "type": "text",
+                      "uuid": "cb6d0f39-12f3-4304-a169-9909b87b5d87"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "9308a413-c7d2-4c25-8d57-3d3260a25b8c"
+                    },
+                    {
+                      "key": "product_image",
+                      "type": "file",
+                      "uuid": "3ef43d89-b432-4f2a-93ea-f076a0f057c0",
+                      "src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/products",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "products"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update product",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Premium Headphone",
+                      "type": "text",
+                      "uuid": "8fe67e96-7531-4e7a-ba3a-936c9008053a"
+                    },
+                    {
+                      "key": "selling_price",
+                      "value": "2999.99",
+                      "type": "text",
+                      "uuid": "304c1803-7ab6-4056-a329-ea2181bba346"
+                    },
+                    {
+                      "key": "category_id",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "5356e742-76ee-4fac-bc08-2766379e2c6a"
+                    },
+                    {
+                      "key": "description",
+                      "value": "High quality wireless headphone",
+                      "type": "text",
+                      "uuid": "5622bd8e-ed6a-4e08-b3dd-689e2491ebef"
+                    },
+                    {
+                      "key": "sku",
+                      "value": "SKU-001",
+                      "type": "text",
+                      "uuid": "7f3c1481-4f0a-4c9e-a291-64e57f0bc94b"
+                    },
+                    {
+                      "key": "barcode",
+                      "value": "123456789",
+                      "type": "text",
+                      "uuid": "f9c065f9-81ba-4709-9180-19da5cb3946f"
+                    },
+                    {
+                      "key": "cross_price",
+                      "value": "3999.99",
+                      "type": "text",
+                      "uuid": "332b9193-d4c8-4de3-98dd-94979761a668"
+                    },
+                    {
+                      "key": "cost_price",
+                      "value": "1500.00",
+                      "type": "text",
+                      "uuid": "cb6d0f39-12f3-4304-a169-9909b87b5d87"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "9308a413-c7d2-4c25-8d57-3d3260a25b8c"
+                    },
+                    {
+                      "key": "product_image",
+                      "type": "file",
+                      "uuid": "3ef43d89-b432-4f2a-93ea-f076a0f057c0",
+                      "src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+                    },
+                    {
+                      "key": "remove_image",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "941b038f-9da5-4961-b85e-d1aa9aeea124"
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PUT",
+                      "type": "text",
+                      "uuid": "2ac6fd94-8e68-4cc9-ad8e-de0857f986a4"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/products/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "products",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all products",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/products?pagination_limit&search_keyword",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination_limit",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "search_keyword",
+                      "value": null,
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single product data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/products/{slug}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "products",
+                    "{slug}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete product",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/products/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "products",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Branches",
+          "item": [
+            {
+              "name": "create branch",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Head Branch",
+                      "type": "text",
+                      "uuid": "8fe67e96-7531-4e7a-ba3a-936c9008053a"
+                    },
+                    {
+                      "key": "address",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "cbf3a9e4-79c6-4dd3-8794-2522c3deb8c1"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "b8d6f524-8044-4c74-bf06-c093a1d14d30"
+                    },
+                    {
+                      "key": "email",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "363b414a-0c57-4e8a-8bb7-70b7a654f809"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "c19e2862-9636-44cb-acfa-1c1f42217bae"
+                    },
+                    {
+                      "key": "is_main",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "cc6de33c-9677-430d-8dea-9de08f5fe857"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/branches",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "branches"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "edit branch",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Head Branch",
+                      "type": "text",
+                      "uuid": "8fe67e96-7531-4e7a-ba3a-936c9008053a"
+                    },
+                    {
+                      "key": "address",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "cbf3a9e4-79c6-4dd3-8794-2522c3deb8c1"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "b8d6f524-8044-4c74-bf06-c093a1d14d30"
+                    },
+                    {
+                      "key": "email",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "363b414a-0c57-4e8a-8bb7-70b7a654f809"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "c19e2862-9636-44cb-acfa-1c1f42217bae"
+                    },
+                    {
+                      "key": "is_main",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "cc6de33c-9677-430d-8dea-9de08f5fe857"
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PUT",
+                      "type": "text",
+                      "uuid": "a44983d4-7a06-4764-b477-be9eedac964f"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/branches/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "branches",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all branches",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/branches",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "branches"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete branch",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/branches/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "branches",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "assign user to branch",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"users\": [\n        {\n            \"user_id\": 1,\n            \"is_primary\": true\n        },\n        {\n            \"user_id\": 2,\n            \"is_primary\": false\n        }\n    ]\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/branches/{branch_id}/users",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "branches",
+                    "{branch_id}",
+                    "users"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "remove user from branch",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/branches/{branch}/users/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "branches",
+                    "{branch}",
+                    "users",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Payment Method",
+          "item": [
+            {
+              "name": "show all payment method",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "Body (eSewa):\n{\n  \"payment_method_id\": 1,\n  \"is_active\": true,\n  \"sort_order\": 1,\n  \"credentials\": {\n    \"merchant_id\": \"your-merchant-id\",\n    \"secret_key\": \"your-secret-key\"\n  }\n}\n\nBody (Khalti):\n{\n  \"payment_method_id\": 2,\n  \"is_active\": true,\n  \"sort_order\": 2,\n  \"credentials\": {\n    \"public_key\": \"your-public-key\",\n    \"secret_key\": \"your-secret-key\"\n  }\n}\n\nBody (FonePay):\n{\n  \"payment_method_id\": 3,\n  \"is_active\": true,\n  \"sort_order\": 3,\n  \"credentials\": {\n    \"merchant_code\": \"your-merchant-code\",\n    \"secret_key\": \"your-secret-key\"\n  }\n}\n\nBody (Bank Transfer):\n{\n  \"payment_method_id\": 4,\n  \"is_active\": true,\n  \"sort_order\": 4,\n  \"credentials\": {\n    \"bank_name\": \"Nepal Investment Bank\",\n    \"account_name\": \"Company Name Pvt. Ltd.\",\n    \"account_number\": \"0123456789\",\n    \"branch\": \"Kathmandu\"\n  }\n}\n\nBody (Cash):\n{\n  \"payment_method_id\": 5,\n  \"is_active\": true,\n  \"sort_order\": 5,\n  \"credentials\": null\n}"
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/payment-methods",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "payment-methods"
                   ]
                 }
               },

@@ -32,9 +32,14 @@ tags:
   - name: Superadmin > User
   - name: Superadmin > Company
   - name: Superadmin > Tenant/Company User
+  - name: Superadmin > Payment Method
+  - name: Superadmin > Tenant Payment Method
   - name: Admin
   - name: Admin > Auth
   - name: Admin > Category
+  - name: Admin > Products
+  - name: Admin > Branches
+  - name: Admin > Payment Method
 paths:
   /api/v1/superadmin/auth/login:
     post:
@@ -246,6 +251,28 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    get:
+      tags:
+        - Superadmin > Company
+      summary: show single company data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/v1/superadmin/tenants/nistrax/users:
     get:
       tags:
@@ -318,6 +345,333 @@ paths:
             type: string
           example: application/json
         - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/superadmin/payment-methods:
+    get:
+      tags:
+        - Superadmin > Payment Method
+      summary: show all payment method
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Superadmin > Payment Method
+      summary: store payment method
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                type:
+                  type: string
+                logo:
+                  type: string
+                description:
+                  type: string
+                is_active:
+                  type: string
+                sort_order:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/superadmin/payment-methods/{id}:
+    post:
+      tags:
+        - Superadmin > Payment Method
+      summary: update payment method
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                type:
+                  type: string
+                logo:
+                  type: string
+                description:
+                  type: string
+                is_active:
+                  type: string
+                sort_order:
+                  type: string
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Superadmin > Payment Method
+      summary: delete payment method
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/superadmin/tenants/{tenantid}/payment-methods:
+    post:
+      tags:
+        - Superadmin > Tenant Payment Method
+      summary: store tenant payment method
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: |-
+                Body (eSewa):
+                {
+                  "payment_method_id": 1,
+                  "is_active": true,
+                  "sort_order": 1,
+                  "credentials": {
+                    "merchant_id": "your-merchant-id",
+                    "secret_key": "your-secret-key"
+                  }
+                }
+
+                Body (Khalti):
+                {
+                  "payment_method_id": 2,
+                  "is_active": true,
+                  "sort_order": 2,
+                  "credentials": {
+                    "public_key": "your-public-key",
+                    "secret_key": "your-secret-key"
+                  }
+                }
+
+                Body (FonePay):
+                {
+                  "payment_method_id": 3,
+                  "is_active": true,
+                  "sort_order": 3,
+                  "credentials": {
+                    "merchant_code": "your-merchant-code",
+                    "secret_key": "your-secret-key"
+                  }
+                }
+
+                Body (Bank Transfer):
+                {
+                  "payment_method_id": 4,
+                  "is_active": true,
+                  "sort_order": 4,
+                  "credentials": {
+                    "bank_name": "Nepal Investment Bank",
+                    "account_name": "Company Name Pvt. Ltd.",
+                    "account_number": "0123456789",
+                    "branch": "Kathmandu"
+                  }
+                }
+
+                Body (Cash):
+                {
+                  "payment_method_id": 5,
+                  "is_active": true,
+                  "sort_order": 5,
+                  "credentials": null
+                }
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: tenantid
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/superadmin/tenants/{tenant}/payment-methods/{tenantPaymentMethod}:
+    post:
+      tags:
+        - Superadmin > Tenant Payment Method
+      summary: update tenent payment method
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                is_active: false
+                sort_order: 3
+                credentials:
+                  merchant_id: updated-merchant-id
+                  secret_key: updated-secret
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: tenant
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: tenantPaymentMethod
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Superadmin > Tenant Payment Method
+      summary: remove tenent payment method
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: tenant
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: tenantPaymentMethod
           in: path
           schema:
             type: string
@@ -541,6 +895,470 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/products:
+    post:
+      tags:
+        - Admin > Products
+      summary: store products
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Premium Headphone
+                selling_price:
+                  type: number
+                  example: '2999.99'
+                category_id:
+                  type: integer
+                  example: '1'
+                description:
+                  type: string
+                  example: High quality wireless headphone
+                sku:
+                  type: string
+                  example: SKU-001
+                barcode:
+                  type: integer
+                  example: '123456789'
+                cross_price:
+                  type: number
+                  example: '3999.99'
+                cost_price:
+                  type: number
+                  example: '1500.00'
+                is_active:
+                  type: integer
+                  example: '1'
+                product_image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Products
+      summary: show all products
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/products/{id}:
+    post:
+      tags:
+        - Admin > Products
+      summary: update product
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Premium Headphone
+                selling_price:
+                  type: number
+                  example: '2999.99'
+                category_id:
+                  type: integer
+                  example: '1'
+                description:
+                  type: string
+                  example: High quality wireless headphone
+                sku:
+                  type: string
+                  example: SKU-001
+                barcode:
+                  type: integer
+                  example: '123456789'
+                cross_price:
+                  type: number
+                  example: '3999.99'
+                cost_price:
+                  type: number
+                  example: '1500.00'
+                is_active:
+                  type: integer
+                  example: '1'
+                product_image:
+                  type: string
+                  format: binary
+                remove_image:
+                  type: integer
+                  example: '1'
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Products
+      summary: delete product
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/products/{slug}:
+    get:
+      tags:
+        - Admin > Products
+      summary: show single product data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/branches:
+    post:
+      tags:
+        - Admin > Branches
+      summary: create branch
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Head Branch
+                address:
+                  type: string
+                phone:
+                  type: string
+                email:
+                  type: string
+                is_active:
+                  type: integer
+                  example: '1'
+                is_main:
+                  type: integer
+                  example: '1'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Branches
+      summary: show all branches
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/branches/{id}:
+    post:
+      tags:
+        - Admin > Branches
+      summary: edit branch
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Head Branch
+                address:
+                  type: string
+                phone:
+                  type: string
+                email:
+                  type: string
+                is_active:
+                  type: integer
+                  example: '1'
+                is_main:
+                  type: integer
+                  example: '1'
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Branches
+      summary: delete branch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/branches/{branch_id}/users:
+    post:
+      tags:
+        - Admin > Branches
+      summary: assign user to branch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                users:
+                  - user_id: 1
+                    is_primary: true
+                  - user_id: 2
+                    is_primary: false
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: branch_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/branches/{branch}/users/{id}:
+    delete:
+      tags:
+        - Admin > Branches
+      summary: remove user from branch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: branch
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/payment-methods:
+    get:
+      tags:
+        - Admin > Payment Method
+      summary: show all payment method
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
