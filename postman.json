@@ -1219,6 +1219,249 @@
           ]
         },
         {
+          "name": "Units",
+          "item": [
+            {
+              "name": "store unit",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "905a128f-4d6f-40ed-af2e-be7e86a00047"
+                    },
+                    {
+                      "key": "abbreviation",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "5f524e62-3727-4b2a-8b5b-4dd8db7b4c19"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "ab853471-3811-47e8-b007-c69ba149d9a6"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/units",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "units"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update unit",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "905a128f-4d6f-40ed-af2e-be7e86a00047"
+                    },
+                    {
+                      "key": "abbreviation",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "5f524e62-3727-4b2a-8b5b-4dd8db7b4c19"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "ab853471-3811-47e8-b007-c69ba149d9a6"
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PUT",
+                      "type": "text",
+                      "uuid": "b9f04361-1d01-4875-afb4-7cb0dc480d87"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/units/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "units",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all units",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/units",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "units"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete unit",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/units/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "units",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Category",
           "item": [
             {
@@ -1488,6 +1731,11 @@
                     "key": "X-Tenant",
                     "value": "nistrax",
                     "type": "text"
+                  },
+                  {
+                    "key": "X-Branch-Id",
+                    "value": "1",
+                    "type": "text"
                   }
                 ],
                 "body": {
@@ -1495,7 +1743,7 @@
                   "formdata": [
                     {
                       "key": "name",
-                      "value": "Premium Headphone",
+                      "value": "Premium Headphone2",
                       "type": "text",
                       "uuid": "8fe67e96-7531-4e7a-ba3a-936c9008053a"
                     },
@@ -1713,10 +1961,15 @@
                     "key": "X-Tenant",
                     "value": "nistrax",
                     "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
                   }
                 ],
                 "url": {
-                  "raw": "{{url}}/api/v1/admin/products?pagination_limit&search_keyword",
+                  "raw": "{{url}}/api/v1/admin/products?pagination_limit&search_keyword&barcode",
                   "host": [
                     "{{url}}"
                   ],
@@ -1729,11 +1982,14 @@
                   "query": [
                     {
                       "key": "pagination_limit",
-                      "value": null,
-                      "type": "text"
+                      "value": null
                     },
                     {
                       "key": "search_keyword",
+                      "value": null
+                    },
+                    {
+                      "key": "barcode",
                       "value": null,
                       "type": "text"
                     }
@@ -1821,6 +2077,141 @@
                     "admin",
                     "products",
                     "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show product by category id",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "Body (eSewa):\n{\n  \"payment_method_id\": 1,\n  \"is_active\": true,\n  \"sort_order\": 1,\n  \"credentials\": {\n    \"merchant_id\": \"your-merchant-id\",\n    \"secret_key\": \"your-secret-key\"\n  }\n}\n\nBody (Khalti):\n{\n  \"payment_method_id\": 2,\n  \"is_active\": true,\n  \"sort_order\": 2,\n  \"credentials\": {\n    \"public_key\": \"your-public-key\",\n    \"secret_key\": \"your-secret-key\"\n  }\n}\n\nBody (FonePay):\n{\n  \"payment_method_id\": 3,\n  \"is_active\": true,\n  \"sort_order\": 3,\n  \"credentials\": {\n    \"merchant_code\": \"your-merchant-code\",\n    \"secret_key\": \"your-secret-key\"\n  }\n}\n\nBody (Bank Transfer):\n{\n  \"payment_method_id\": 4,\n  \"is_active\": true,\n  \"sort_order\": 4,\n  \"credentials\": {\n    \"bank_name\": \"Nepal Investment Bank\",\n    \"account_name\": \"Company Name Pvt. Ltd.\",\n    \"account_number\": \"0123456789\",\n    \"branch\": \"Kathmandu\"\n  }\n}\n\nBody (Cash):\n{\n  \"payment_method_id\": 5,\n  \"is_active\": true,\n  \"sort_order\": 5,\n  \"credentials\": null\n}"
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/categories/{category_id}/products?pagination_limit=25",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "categories",
+                    "{category_id}",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination_limit",
+                      "value": "25",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show pos products",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/pos-products?pagination_limit&search_keyword&barcode&item_type&category_id",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "pos-products"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination_limit",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "search_keyword",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "barcode",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "item_type",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "category_id",
+                      "value": null,
+                      "type": "text"
+                    }
                   ]
                 }
               },
@@ -2250,6 +2641,2088 @@
                     "v1",
                     "admin",
                     "payment-methods"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Customer",
+          "item": [
+            {
+              "name": "show all customers",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/customers",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "customers"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show customer order data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/customers/{id}/orders",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "customers",
+                    "{id}",
+                    "orders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "customer due payment",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_method_id\": 1,\n  \"amount\": 500.00,\n  \"transaction_reference\": \"TXN-001\",\n  \"note\": \"Paying off old balance\"\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/customers/{id}/payments",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "customers",
+                    "{id}",
+                    "payments"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show customer due payment",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_method_id\": 1,\n  \"amount\": 500.00,\n  \"transaction_reference\": \"TXN-001\",\n  \"note\": \"Paying off old balance\"\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/customers/{id}/payments",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "customers",
+                    "{id}",
+                    "payments"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store customer data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "905a128f-4d6f-40ed-af2e-be7e86a00047"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "ba7c5657-a8b9-48e4-a09f-cdbbf182c45e"
+                    },
+                    {
+                      "key": "email",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "0065ad25-567b-495f-a6d8-e023eb8a117f"
+                    },
+                    {
+                      "key": "address",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "07b6849e-7c73-4e42-b9e6-a2728fcaaa02"
+                    },
+                    {
+                      "key": "opening_balance",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "bead1a84-2e8a-44fa-bf55-35ebbbc54625"
+                    },
+                    {
+                      "key": "pan_number",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "70406188-4baa-4f73-a88c-38ac89c255b4"
+                    },
+                    {
+                      "key": "profile_image",
+                      "type": "file",
+                      "uuid": "44654736-7755-430d-9550-179e32d5563f",
+                      "value": null
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/customers",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "customers"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update customer data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "905a128f-4d6f-40ed-af2e-be7e86a00047"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "ba7c5657-a8b9-48e4-a09f-cdbbf182c45e"
+                    },
+                    {
+                      "key": "email",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "0065ad25-567b-495f-a6d8-e023eb8a117f"
+                    },
+                    {
+                      "key": "address",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "07b6849e-7c73-4e42-b9e6-a2728fcaaa02"
+                    },
+                    {
+                      "key": "opening_balance",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "bead1a84-2e8a-44fa-bf55-35ebbbc54625"
+                    },
+                    {
+                      "key": "pan_number",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "70406188-4baa-4f73-a88c-38ac89c255b4"
+                    },
+                    {
+                      "key": "profile_image",
+                      "type": "file",
+                      "uuid": "44654736-7755-430d-9550-179e32d5563f",
+                      "value": null
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PUT",
+                      "type": "text",
+                      "uuid": "7d0a467c-19fb-4605-bbe5-8e4332aceeb2"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/customers/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "customers",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "single show customer data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/customers/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "customers",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete customer data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/customers/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "customers",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "export customer data to excel",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/customers/export",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "customers",
+                    "export"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "import customer data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/customers/import",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "customers",
+                    "import"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Supplier",
+          "item": [
+            {
+              "name": "store supplier data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "ABC Suppliers",
+                      "type": "text",
+                      "uuid": "7ae343d4-4aef-47ec-a3a2-9e7cc45408c8"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "9841234567",
+                      "type": "text",
+                      "uuid": "1f74a758-dc27-4f34-aae0-abf21b66a754"
+                    },
+                    {
+                      "key": "email",
+                      "value": "\tabc@supplier.com",
+                      "type": "text",
+                      "uuid": "912af33f-b265-4aa3-bea9-009cf3ac5698"
+                    },
+                    {
+                      "key": "address",
+                      "value": "Kathmandu, Nepal\t",
+                      "type": "text",
+                      "uuid": "cf1092bc-52d8-417b-aab5-4f5c520ee083"
+                    },
+                    {
+                      "key": "pan_number",
+                      "value": "123456789",
+                      "type": "text",
+                      "uuid": "b26b0d42-2c91-4222-b9c9-53ae0fa7fa72"
+                    },
+                    {
+                      "key": "profile_image",
+                      "type": "file",
+                      "uuid": "6063d8c4-b099-46e8-b61b-4693ac9ab314",
+                      "value": null
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/suppliers",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "suppliers"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update supplier data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "ABC Suppliers",
+                      "type": "text",
+                      "uuid": "7ae343d4-4aef-47ec-a3a2-9e7cc45408c8"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "9841234567",
+                      "type": "text",
+                      "uuid": "1f74a758-dc27-4f34-aae0-abf21b66a754"
+                    },
+                    {
+                      "key": "email",
+                      "value": "\tabc@supplier.com",
+                      "type": "text",
+                      "uuid": "912af33f-b265-4aa3-bea9-009cf3ac5698"
+                    },
+                    {
+                      "key": "address",
+                      "value": "Kathmandu, Nepal\t",
+                      "type": "text",
+                      "uuid": "cf1092bc-52d8-417b-aab5-4f5c520ee083"
+                    },
+                    {
+                      "key": "pan_number",
+                      "value": "123456789",
+                      "type": "text",
+                      "uuid": "b26b0d42-2c91-4222-b9c9-53ae0fa7fa72"
+                    },
+                    {
+                      "key": "profile_image",
+                      "type": "file",
+                      "uuid": "6063d8c4-b099-46e8-b61b-4693ac9ab314",
+                      "value": null
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PUT",
+                      "type": "text",
+                      "uuid": "1b4cec1a-bd63-4858-a1e3-77dfc657a88c"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/suppliers/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "suppliers",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all supplier",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/suppliers",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "suppliers"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "single show supplier data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/suppliers/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "suppliers",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete supplier data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/suppliers/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "suppliers",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "export supplier data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/suppliers/export",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "suppliers",
+                    "export"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "import supplier data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/suppliers/import",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "suppliers",
+                    "import"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Orders",
+          "item": [
+            {
+              "name": "show all orders",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/orders?status&payment_status&customer_id&created_by&search&date_from&date_to",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": null
+                    },
+                    {
+                      "key": "payment_status",
+                      "value": null
+                    },
+                    {
+                      "key": "customer_id",
+                      "value": null
+                    },
+                    {
+                      "key": "created_by",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "search",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": null,
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "void order",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/orders/{id}/void",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "orders",
+                    "{id}",
+                    "void"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "User",
+          "item": [
+            {
+              "name": "store user data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"cashier\",\n  \"branch_id\": 1\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/users",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "users"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update user data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"cashier\",\n  \"branch_id\": 1,\n  \"_method\":\"PUT\"\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/users/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "users",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all users",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/users",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "users"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "single show user data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/users/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "users",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete user data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/users/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "users",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "toggle user status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "_method",
+                      "value": "PATCH",
+                      "type": "text",
+                      "uuid": "fce75290-35de-452c-b890-f1a4c65e2fa3"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/users/{user}/toggle-status",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "users",
+                    "{user}",
+                    "toggle-status"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Expenses Category",
+          "item": [
+            {
+              "name": "store expenses category data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Rent",
+                      "type": "text",
+                      "uuid": "453217fc-3686-40d6-bf1a-aca172dcf33b"
+                    },
+                    {
+                      "key": "description",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "8a30a364-74ee-407f-a7ba-c815d08379e4"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/expense-categories",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "expense-categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update expenses category data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Rent",
+                      "type": "text",
+                      "uuid": "453217fc-3686-40d6-bf1a-aca172dcf33b"
+                    },
+                    {
+                      "key": "description",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "8a30a364-74ee-407f-a7ba-c815d08379e4"
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PUT",
+                      "type": "text",
+                      "uuid": "e53935d9-1f22-4e1e-8ae6-8885430bf1d7"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/expense-categories/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "expense-categories",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all expenses category data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/expense-categories",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "expense-categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete expenses category data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/expense-categories/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "expense-categories",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Expenses",
+          "item": [
+            {
+              "name": "store expenses data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expense_date\": \"2026-06-28\",\n  \"payment_method_id\": 1,\n  \"supplier_id\": 2,\n  \"discount_amount\": 50,\n  \"vat_amount\": 30,\n  \"note\": \"Monthly office supplies\",\n  \"items\": [\n    {\n      \"expense_category_id\": 1,\n      \"description\": \"Stationery purchase\",\n      \"amount\": 500\n    },\n    {\n      \"expense_category_id\": 2,\n      \"description\": \"Electricity bill\",\n      \"amount\": 1200\n    }\n  ]\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/expenses",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "expenses"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Day Book",
+          "item": [
+            {
+              "name": "store daybook data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "transaction_date",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "453217fc-3686-40d6-bf1a-aca172dcf33b"
+                    },
+                    {
+                      "key": "transaction_type",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "8a30a364-74ee-407f-a7ba-c815d08379e4"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "dcf38b37-c1ba-44c3-af30-6b1c70fdc7a6"
+                    },
+                    {
+                      "key": "particular",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "4ed4d072-d062-4c4b-b638-d7d873004254"
+                    },
+                    {
+                      "key": "remarks",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "37600688-cb0c-4c35-b3eb-c569d9bbaaff"
+                    },
+                    {
+                      "key": "cashier_session_id",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "6d6714d4-fbe6-4153-89e4-b1c7ce794e4f"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/day-book",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "day-book"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "edit day book data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "transaction_date",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "453217fc-3686-40d6-bf1a-aca172dcf33b"
+                    },
+                    {
+                      "key": "transaction_type",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "8a30a364-74ee-407f-a7ba-c815d08379e4"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "dcf38b37-c1ba-44c3-af30-6b1c70fdc7a6"
+                    },
+                    {
+                      "key": "particular",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "4ed4d072-d062-4c4b-b638-d7d873004254"
+                    },
+                    {
+                      "key": "remarks",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "37600688-cb0c-4c35-b3eb-c569d9bbaaff"
+                    },
+                    {
+                      "key": "cashier_session_id",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "6d6714d4-fbe6-4153-89e4-b1c7ce794e4f"
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PUT",
+                      "type": "text",
+                      "uuid": "21210236-d7be-46e0-99d8-1f8413401adc"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/day-book/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "day-book",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all day book data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/day-book",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "day-book"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "single day book data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/day-book/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "day-book",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete day book data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/day-book/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "day-book",
+                    "{id}"
                   ]
                 }
               },
