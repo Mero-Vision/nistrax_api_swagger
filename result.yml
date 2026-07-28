@@ -48,6 +48,16 @@ tags:
   - name: Admin > Expenses Category
   - name: Admin > Expenses
   - name: Admin > Day Book
+  - name: Admin > Cashier Sessions
+  - name: Admin > Subscriptions
+  - name: Admin > User Sessions
+  - name: Admin > SMS
+  - name: Admin > Superadmin Site Setting
+  - name: Website
+  - name: Website > Package
+  - name: Website > Blog
+  - name: Website > Site Settings
+  - name: Website > Inquiry
 paths:
   /api/v1/superadmin/auth/login:
     post:
@@ -742,6 +752,43 @@ paths:
           schema:
             type: string
           example: nistrax
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/auth/change-password:
+    post:
+      tags:
+        - Admin > Auth
+      summary: change logged in user password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                current_password: OldPass123
+                password: NewPass456
+                password_confirmation: NewPass456
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -2929,6 +2976,732 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/pos/day-book:
+    get:
+      tags:
+        - Admin > Day Book
+      summary: show pos daybook
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/cashier-sessions/open:
+    post:
+      tags:
+        - Admin > Cashier Sessions
+      summary: store cashier session open
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                opening_amount: 5000
+                note: Morning shift
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/cashier-sessions/{id}/close:
+    post:
+      tags:
+        - Admin > Cashier Sessions
+      summary: store close session data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employee_cash_in_hand: 6800
+                note: End of morning shift
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/cashier-sessions:
+    get:
+      tags:
+        - Admin > Cashier Sessions
+      summary: show all cashier sessions data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: user_id
+          in: query
+          schema:
+            type: string
+        - name: date_from
+          in: query
+          schema:
+            type: string
+        - name: date_to
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/cashier-sessions/active:
+    get:
+      tags:
+        - Admin > Cashier Sessions
+      summary: show active session
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/cashier-sessions/{id}:
+    get:
+      tags:
+        - Admin > Cashier Sessions
+      summary: show single cashier session data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/cashier-sessions/{id}/live-preview:
+    get:
+      tags:
+        - Admin > Cashier Sessions
+      summary: show cashier session live preview data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/subscription:
+    get:
+      tags:
+        - Admin > Subscriptions
+      summary: show current company subscription data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/auth/sessions:
+    get:
+      tags:
+        - Admin > User Sessions
+      summary: show all sessions
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/auth/sessions/logout-others:
+    post:
+      tags:
+        - Admin > User Sessions
+      summary: logout others
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/auth/sessions/logout-custom:
+    post:
+      tags:
+        - Admin > User Sessions
+      summary: logout custom
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/auth/sessions/{session}:
+    delete:
+      tags:
+        - Admin > User Sessions
+      summary: delete session
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: session
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/sms/balance:
+    get:
+      tags:
+        - Admin > SMS
+      summary: show sms balance
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/sms/quick-info:
+    get:
+      tags:
+        - Admin > SMS
+      summary: show sms quick info
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/sms/quick-send:
+    post:
+      tags:
+        - Admin > SMS
+      summary: sms quick send
+      description: >-
+        receiver_type: customer or supplier
+
+        receiver_id: id of that customer/supplier
+
+        sms_template_id: optional, must belong to the current branch
+
+        title, message: support placeholders {name}, {due_amount}, {date},
+        {company_name} — auto-substituted per receiver
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                receiver_type: customer
+                receiver_id: 12
+                sms_template_id: 3
+                title: Payment Reminder
+                message: >-
+                  Dear {name}, your due amount is Rs. {due_amount} as of {date}.
+                  - {company_name}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/sms/logs:
+    get:
+      tags:
+        - Admin > SMS
+      summary: show all sms logs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/sms/bulk-send:
+    post:
+      tags:
+        - Admin > SMS
+      summary: send bulk sms
+      description: |-
+        recipient_type: all | customer | supplier | contact_group
+        contact_group_id: required only when recipient_type is contact_group
+        sms_template_id: optional
+        title, message: same placeholder support, resolved per recipient
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                recipient_type: contact_group
+                contact_group_id: 5
+                sms_template_id: 3
+                title: Festival Offer
+                message: Dear {name}, enjoy 20% off this Dashain! - {company_name}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/site-settings:
+    get:
+      tags:
+        - Admin > Superadmin Site Setting
+      summary: show all superadmin site setting data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/website/short-packages:
+    get:
+      tags:
+        - Website > Package
+      summary: show only package name
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/website/packages:
+    get:
+      tags:
+        - Website > Package
+      summary: show all packages
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/website/blogs:
+    get:
+      tags:
+        - Website > Blog
+      summary: show all blogs
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/website/blogs/{blog:slug}:
+    get:
+      tags:
+        - Website > Blog
+      summary: show single blog data
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/website/site-settings:
+    get:
+      tags:
+        - Website > Site Settings
+      summary: show site setting data
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/website/inquiries:
+    post:
+      tags:
+        - Website > Inquiry
+      summary: store inquiry data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                full_name:
+                  type: string
+                  example: hy
+                email:
+                  type: string
+                  example: hy@gmail.com
+                package_id:
+                  type: integer
+                  example: '1'
+                business_type:
+                  type: string
+                  example: retail
+                message:
+                  type: string
+                  example: hy
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response

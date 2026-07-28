@@ -1215,6 +1215,62 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "change logged in user password",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"current_password\": \"OldPass123\",\n  \"password\": \"NewPass456\",\n  \"password_confirmation\": \"NewPass456\"\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/auth/change-password",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "auth",
+                    "change-password"
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -4723,6 +4779,1254 @@
                     "admin",
                     "day-book",
                     "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show pos daybook",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/pos/day-book",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "pos",
+                    "day-book"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Cashier Sessions",
+          "item": [
+            {
+              "name": "store cashier session open",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"opening_amount\": 5000,\n  \"note\": \"Morning shift\"\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/cashier-sessions/open",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "cashier-sessions",
+                    "open"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store close session data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"employee_cash_in_hand\": 6800,\n  \"note\": \"End of morning shift\"\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/cashier-sessions/{id}/close",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "cashier-sessions",
+                    "{id}",
+                    "close"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all cashier sessions data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/cashier-sessions?pagination_limit&status&user_id&date_from&date_to",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "cashier-sessions"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination_limit",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "status",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": null,
+                      "type": "text"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": null,
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show active session",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/cashier-sessions/active",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "cashier-sessions",
+                    "active"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single cashier session data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/cashier-sessions/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "cashier-sessions",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show cashier session live preview data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/cashier-sessions/{id}/live-preview",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "cashier-sessions",
+                    "{id}",
+                    "live-preview"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Subscriptions",
+          "item": [
+            {
+              "name": "show current company subscription data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "full_name",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "1d97a077-a16d-4db2-a674-92f1cc2700dc"
+                    },
+                    {
+                      "key": "email",
+                      "value": "hy@gmail.com",
+                      "type": "text",
+                      "uuid": "065f61fe-5df1-40ee-b800-2b3c203dc0fc"
+                    },
+                    {
+                      "key": "package_id",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "a6001ae4-ee65-4558-80f6-13493179cb01"
+                    },
+                    {
+                      "key": "business_type",
+                      "value": "retail",
+                      "type": "text",
+                      "uuid": "233c8861-80b9-4d44-8198-dcc6887d1432"
+                    },
+                    {
+                      "key": "message",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "555e3122-71c2-4b0a-ae51-7b715b44568f"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/subscription",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "subscription"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "User Sessions",
+          "item": [
+            {
+              "name": "show all sessions",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/auth/sessions",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "auth",
+                    "sessions"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "logout others",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/auth/sessions/logout-others",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "auth",
+                    "sessions",
+                    "logout-others"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "logout custom",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/auth/sessions/logout-custom",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "auth",
+                    "sessions",
+                    "logout-custom"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete session",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/auth/sessions/{session}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "auth",
+                    "sessions",
+                    "{session}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "SMS",
+          "item": [
+            {
+              "name": "show sms balance",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/sms/balance",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "sms",
+                    "balance"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show sms quick info",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/sms/quick-info",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "sms",
+                    "quick-info"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "sms quick send",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"receiver_type\": \"customer\",\n    \"receiver_id\": 12,\n    \"sms_template_id\": 3,\n    \"title\": \"Payment Reminder\",\n    \"message\": \"Dear {name}, your due amount is Rs. {due_amount} as of {date}. - {company_name}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/sms/quick-send",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "sms",
+                    "quick-send"
+                  ]
+                },
+                "description": "receiver_type: customer or supplier\nreceiver_id: id of that customer/supplier\nsms_template_id: optional, must belong to the current branch\ntitle, message: support placeholders {name}, {due_amount}, {date}, {company_name} — auto-substituted per receiver"
+              },
+              "response": []
+            },
+            {
+              "name": "show all sms logs",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/sms/logs",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "sms",
+                    "logs"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "send bulk sms",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"recipient_type\": \"contact_group\",\n    \"contact_group_id\": 5,\n    \"sms_template_id\": 3,\n    \"title\": \"Festival Offer\",\n    \"message\": \"Dear {name}, enjoy 20% off this Dashain! - {company_name}\"\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/sms/bulk-send",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "sms",
+                    "bulk-send"
+                  ]
+                },
+                "description": "recipient_type: all | customer | supplier | contact_group\ncontact_group_id: required only when recipient_type is contact_group\nsms_template_id: optional\ntitle, message: same placeholder support, resolved per recipient"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Superadmin Site Setting",
+          "item": [
+            {
+              "name": "show all superadmin site setting data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/site-settings",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "site-settings"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Website",
+      "item": [
+        {
+          "name": "Package",
+          "item": [
+            {
+              "name": "show only package name",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/website/short-packages",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "website",
+                    "short-packages"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all packages",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/website/packages",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "website",
+                    "packages"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Blog",
+          "item": [
+            {
+              "name": "show all blogs",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/website/blogs",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "website",
+                    "blogs"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single blog data",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/v1/website/blogs/{blog:slug}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "website",
+                    "blogs",
+                    "{blog:slug}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Site Settings",
+          "item": [
+            {
+              "name": "show site setting data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/website/site-settings",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "website",
+                    "site-settings"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Inquiry",
+          "item": [
+            {
+              "name": "store inquiry data",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "full_name",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "1d97a077-a16d-4db2-a674-92f1cc2700dc"
+                    },
+                    {
+                      "key": "email",
+                      "value": "hy@gmail.com",
+                      "type": "text",
+                      "uuid": "065f61fe-5df1-40ee-b800-2b3c203dc0fc"
+                    },
+                    {
+                      "key": "package_id",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "a6001ae4-ee65-4558-80f6-13493179cb01"
+                    },
+                    {
+                      "key": "business_type",
+                      "value": "retail",
+                      "type": "text",
+                      "uuid": "233c8861-80b9-4d44-8198-dcc6887d1432"
+                    },
+                    {
+                      "key": "message",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "555e3122-71c2-4b0a-ae51-7b715b44568f"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/website/inquiries",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "website",
+                    "inquiries"
                   ]
                 }
               },
