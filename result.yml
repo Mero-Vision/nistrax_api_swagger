@@ -50,9 +50,15 @@ tags:
   - name: Admin > Day Book
   - name: Admin > Cashier Sessions
   - name: Admin > Subscriptions
-  - name: Admin > User Sessions
+  - name: Admin > User Device Sessions
   - name: Admin > SMS
   - name: Admin > Superadmin Site Setting
+  - name: Admin > Offer and Promotions
+  - name: Admin > Purchase Order
+  - name: Admin > Purchase Return
+  - name: Admin > Sales Return
+  - name: Admin > App Version
+  - name: Admin > Fiscal Year
   - name: Website
   - name: Website > Package
   - name: Website > Blog
@@ -1372,7 +1378,7 @@ paths:
     get:
       tags:
         - Admin > Products
-      summary: show pos products
+      summary: show visual mode pos products
       security:
         - bearerAuth: []
       parameters:
@@ -1411,6 +1417,34 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/pos-products-compact:
+    get:
+      tags:
+        - Admin > Products
+      summary: show compact mode pos product
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1629,6 +1663,81 @@ paths:
             type: string
           required: true
         - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/branches/{branch}/pos-display-mode:
+    post:
+      tags:
+        - Admin > Branches
+      summary: update display mode of branches
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                pos_display_mode:
+                  type: string
+                  example: visual or compact
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: branch
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/branches/{branchId}/pos-display-mode:
+    get:
+      tags:
+        - Admin > Branches
+      summary: show active branch only pos display mode
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: branchId
           in: path
           schema:
             type: string
@@ -2790,6 +2899,180 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    get:
+      tags:
+        - Admin > Expenses
+      summary: show expenses data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+        - name: supplier_id
+          in: query
+          schema:
+            type: integer
+          example: '2'
+        - name: payment_status
+          in: query
+          schema:
+            type: string
+          example: partial
+        - name: search
+          in: query
+          schema:
+            type: string
+          example: EXP-0001
+        - name: date_from
+          in: query
+          schema:
+            type: string
+          example: '2026-07-01'
+        - name: date_to
+          in: query
+          schema:
+            type: string
+          example: '2026-07-31'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/expenses/{id}:
+    post:
+      tags:
+        - Admin > Expenses
+      summary: update expenses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                expense_date: '2026-06-28'
+                payment_method_id: 1
+                supplier_id: 2
+                discount_amount: 50
+                vat_amount: 30
+                note: Monthly office supplies
+                items:
+                  - expense_category_id: 1
+                    description: Stationery purchase
+                    amount: 500
+                  - expense_category_id: 2
+                    description: Electricity bill
+                    amount: 1200
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Expenses
+      summary: single show expense data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Expenses
+      summary: delete expenses
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/v1/admin/day-book:
     post:
       tags:
@@ -3228,6 +3511,34 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/v1/admin/cashier-sessions/has-active:
+    get:
+      tags:
+        - Admin > Cashier Sessions
+      summary: check active or inactive logged in cashier session
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/v1/admin/subscription:
     get:
       tags:
@@ -3259,7 +3570,7 @@ paths:
   /api/v1/admin/auth/sessions:
     get:
       tags:
-        - Admin > User Sessions
+        - Admin > User Device Sessions
       summary: show all sessions
       security:
         - bearerAuth: []
@@ -3287,7 +3598,7 @@ paths:
   /api/v1/admin/auth/sessions/logout-others:
     post:
       tags:
-        - Admin > User Sessions
+        - Admin > User Device Sessions
       summary: logout others
       requestBody:
         content:
@@ -3320,7 +3631,7 @@ paths:
   /api/v1/admin/auth/sessions/logout-custom:
     post:
       tags:
-        - Admin > User Sessions
+        - Admin > User Device Sessions
       summary: logout custom
       requestBody:
         content: {}
@@ -3350,7 +3661,7 @@ paths:
   /api/v1/admin/auth/sessions/{session}:
     delete:
       tags:
-        - Admin > User Sessions
+        - Admin > User Device Sessions
       summary: delete session
       security:
         - bearerAuth: []
@@ -3563,6 +3874,1165 @@ paths:
       tags:
         - Admin > Superadmin Site Setting
       summary: show all superadmin site setting data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/offers:
+    get:
+      tags:
+        - Admin > Offer and Promotions
+      summary: show all offers data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Offer and Promotions
+      summary: store offer data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Summer Sale 20%
+                description: 20% off beverages, capped at Rs. 200
+                application_type: automatic
+                offer_type: percentage
+                scope_type: specific_categories
+                customer_segment: all
+                value: 20
+                max_discount_amount: 200
+                is_stackable: false
+                priority: 0
+                starts_at: '2026-08-01T00:00:00'
+                ends_at: '2026-08-31T23:59:59'
+                status: active
+                category_ids:
+                  - 3
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/ffers/evaluate:
+    post:
+      tags:
+        - Admin > Offer and Promotions
+      summary: evaluate the offers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                items:
+                  - product_id: 3
+                    quantity: 2
+                    unit_price: 2999.99
+                customer_id: 8
+                coupon_code: SAVE10
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/offers/validate-coupon:
+    post:
+      tags:
+        - Admin > Offer and Promotions
+      summary: validate coupen
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                code: SAVE10
+                customer_id: 8
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/offers/redeem:
+    post:
+      tags:
+        - Admin > Offer and Promotions
+      summary: redeem offer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                order_id: 0198e2b1-1234-7abc-8def-000000000000
+                customer_id: 8
+                redemptions:
+                  - offer_id: 5
+                    discount_amount: 200
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/offers/{id}:
+    post:
+      tags:
+        - Admin > Offer and Promotions
+      summary: update offer data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Summer Sale 25%
+                description: 25% off beverages, capped at Rs. 250
+                application_type: automatic
+                offer_type: percentage
+                scope_type: specific_categories
+                customer_segment: all
+                value: 25
+                max_discount_amount: 250
+                is_stackable: false
+                priority: 0
+                starts_at: '2026-08-01T00:00:00'
+                ends_at: '2026-08-31T23:59:59'
+                status: active
+                category_ids:
+                  - 3
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Offer and Promotions
+      summary: delete offer
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Offer and Promotions
+      summary: show single offer data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/offers/{id}/toggle-status:
+    get:
+      tags:
+        - Admin > Offer and Promotions
+      summary: update offer status
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/offers/{id}/redemptions:
+    get:
+      tags:
+        - Admin > Offer and Promotions
+      summary: show offer redemption data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/purchase-orders:
+    get:
+      tags:
+        - Admin > Purchase Order
+      summary: show all purchase order data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          example: ordered
+        - name: payment_status
+          in: query
+          schema:
+            type: string
+          example: due
+        - name: supplier_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search
+          in: query
+          schema:
+            type: string
+          example: PO-2026
+        - name: date_from
+          in: query
+          schema:
+            type: string
+          example: '2026-08-01'
+        - name: date_to
+          in: query
+          schema:
+            type: string
+          example: '2026-08-31'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Purchase Order
+      summary: store purchase order data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                supplier_id: 1
+                ordered_date: '2026-08-03'
+                expected_delivery_date: '2026-08-10'
+                discount_amount: 50
+                vat_amount: 100
+                shipping_amount: 25
+                paid_amount: 0
+                note: Monthly stock replenishment
+                items:
+                  - product_id: 3
+                    product_variant_id: null
+                    batch_id: null
+                    warehouse_id: 1
+                    quantity_ordered: 50
+                    unit_cost: 120.5
+                    discount_amount: 0
+                  - product_id: 7
+                    product_variant_id: null
+                    batch_id: null
+                    warehouse_id: 1
+                    quantity_ordered: 20
+                    unit_cost: 300
+                    discount_amount: 10
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/purchase-orders/{purchase_order_id}:
+    get:
+      tags:
+        - Admin > Purchase Order
+      summary: show single purchase order data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: purchase_order_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Purchase Order
+      summary: update purchase order data
+      description: >-
+        Only works while the order is still draft — otherwise returns 422 "Only
+        draft purchase orders can be updated.". Items can't be edited here (no
+        items field). net_amount/payment_status are recalculated server-side.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                supplier_id: 1
+                ordered_date: '2026-08-03'
+                expected_delivery_date: '2026-08-12'
+                shipping_amount: 30
+                vat_amount: 100
+                paid_amount: 500
+                note: Updated delivery date, added partial payment
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: purchase_order_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Purchase Order
+      summary: delete purchase order
+      description: >-
+        Only works while draft — otherwise 422 "Only draft purchase orders can
+        be deleted."
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: purchase_order_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/purchase-orders/{purchase_order_id}/confirm:
+    post:
+      tags:
+        - Admin > Purchase Order
+      summary: confirm purchase order data
+      description: >-
+        Moves draft → ordered. ⚠️ 422 "Only draft purchase orders can be
+        confirmed." if not draft.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: purchase_order_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/purchase-orders/{purchase_order_id}/receive:
+    post:
+      tags:
+        - Admin > Purchase Order
+      summary: receive products of purchase order
+      description: >-
+        items[].id = the purchase_order_item id (not product_id) — get these
+        from the items array in the show/confirm response. Must be
+        ordered/partially_received (not draft, cancelled, or fully received).
+        warehouse_id optional if already set on the line. Status auto-becomes
+        received once every line's quantity_received >= quantity_ordered, else
+        partially_received.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                received_date: '2026-08-10'
+                items:
+                  - id: 15
+                    quantity_received: 50
+                    warehouse_id: 1
+                  - id: 16
+                    quantity_received: 10
+                    warehouse_id: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: purchase_order_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/purchase-orders/{purchase_order_id}/cancel:
+    post:
+      tags:
+        - Admin > Purchase Order
+      summary: cancel purchase order
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: purchase_order_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/purchase-orders/{purchase_order_id}/payments:
+    post:
+      tags:
+        - Admin > Purchase Order
+      summary: purchase order payment
+      description: >-
+        ⚠️ Rejected (422) if the order is draft, cancelled, already paid, or if
+        amount pushes paid_amount above net_amount.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                amount: 250
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: purchase_order_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/purchase-returns:
+    get:
+      tags:
+        - Admin > Purchase Return
+      summary: show all purchase return data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          example: completed
+        - name: supplier_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search
+          in: query
+          schema:
+            type: string
+          example: PR-000
+        - name: date_from
+          in: query
+          schema:
+            type: string
+          example: '2026-08-01'
+        - name: date_to
+          in: query
+          schema:
+            type: string
+          example: '2026-08-31'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Purchase Return
+      summary: store purchase return data
+      description: >-
+        Notes:
+
+
+        purchase_order_id is the PO's UUID — the PO must be received or
+        partially_received (⚠️ 422 otherwise).
+
+        items[].purchase_order_item_id = the purchase_order_item id (same ids
+        used in /purchase-orders/{id}/receive), not product_id.
+
+        quantity can't exceed that line's quantity_received minus anything
+        already returned in a completed return (⚠️ 422 "Cannot return X units...
+        Max returnable: Y.").
+
+        warehouse_id optional — defaults to the PO item's warehouse; stock is
+        deducted from there if inventory exists for that product/variant/batch
+        combo.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                purchase_order_id: 0198e2b1-1234-7abc-8def-000000000000
+                return_date: '2026-08-05'
+                note: Damaged units found on inspection
+                items:
+                  - purchase_order_item_id: 15
+                    quantity: 2
+                    warehouse_id: 1
+                  - purchase_order_item_id: 16
+                    quantity: 1
+                    warehouse_id: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/purchase-returns/{purchase_return_id}:
+    get:
+      tags:
+        - Admin > Purchase Return
+      summary: single show purchase return data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: purchase_return_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/purchase-returns/{purchase_return_id}/cancel:
+    get:
+      tags:
+        - Admin > Purchase Return
+      summary: cancel purchase return
+      description: >-
+        Reverses the return — adds the returned stock back and sets status:
+        "cancelled". ⚠️ 422 "Purchase return is already cancelled." if already
+        cancelled.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: purchase_return_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/sale-returns:
+    get:
+      tags:
+        - Admin > Sales Return
+      summary: store sales return data
+      description: >-
+        Notes:
+
+
+        refund_type must be one of cash_refund | store_credit | exchange.
+
+        order_id must belong to an order that's confirmed, paid, completed,
+        partially_refunded, or refunded (⚠️ 422 otherwise).
+
+        items[].order_item_id = the order_item id, not product_id.
+
+        quantity can't exceed that line's ordered quantity minus anything
+        already returned in a completed return (⚠️ 422 "Cannot return X units...
+        Max returnable: Y.").
+
+        warehouse_id optional — defaults to the order item's warehouse; stock is
+        restocked there if provided (unlike purchase returns, this doesn't
+        require existing inventory rows — it always adds stock when a warehouse
+        is resolved).
+
+        On success this also updates the parent order's payment_status/status to
+        refunded or partially_refunded and writes a refund OrderPayment record.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/sale-returns/{sale_return_id}:
+    get:
+      tags:
+        - Admin > Sales Return
+      summary: show single sales return data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: sale_return_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/sale-returns/{sale_return_id}/cancel:
+    post:
+      tags:
+        - Admin > Sales Return
+      summary: cancel sales return
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: sale_return_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/app-versions:
+    get:
+      tags:
+        - Admin > App Version
+      summary: show app version data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/fiscal-years:
+    get:
+      tags:
+        - Admin > Fiscal Year
+      summary: show fiscal year data
       security:
         - bearerAuth: []
       parameters:

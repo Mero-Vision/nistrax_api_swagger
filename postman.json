@@ -2201,7 +2201,7 @@
               "response": []
             },
             {
-              "name": "show pos products",
+              "name": "show visual mode pos products",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -2268,6 +2268,59 @@
                       "value": null,
                       "type": "text"
                     }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show compact mode pos product",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/pos-products-compact",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "pos-products-compact"
                   ]
                 }
               },
@@ -2639,6 +2692,120 @@
                     "{branch}",
                     "users",
                     "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update display mode of branches",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "pos_display_mode",
+                      "value": "visual or compact",
+                      "type": "text",
+                      "uuid": "b1df3115-e826-4afc-b521-aed6c123ea7c"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/branches/{branch}/pos-display-mode",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "branches",
+                    "{branch}",
+                    "pos-display-mode"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show active branch only pos display mode",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/branches/{branchId}/pos-display-mode",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "branches",
+                    "{branchId}",
+                    "pos-display-mode"
                   ]
                 }
               },
@@ -4457,6 +4624,246 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "update expenses",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"expense_date\": \"2026-06-28\",\n    \"payment_method_id\": 1,\n    \"supplier_id\": 2,\n    \"discount_amount\": 50,\n    \"vat_amount\": 30,\n    \"note\": \"Monthly office supplies\",\n    \"items\": [\n        {\n            \"expense_category_id\": 1,\n            \"description\": \"Stationery purchase\",\n            \"amount\": 500\n        },\n        {\n            \"expense_category_id\": 2,\n            \"description\": \"Electricity bill\",\n            \"amount\": 1200\n        }\n    ],\n    \"_method\": \"PUT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/expenses/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "expenses",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show expenses data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/expenses?pagination_limit=15&supplier_id=2&payment_status=partial&search=EXP-0001&date_from=2026-07-01&date_to=2026-07-31",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "expenses"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination_limit",
+                      "value": "15"
+                    },
+                    {
+                      "key": "supplier_id",
+                      "value": "2"
+                    },
+                    {
+                      "key": "payment_status",
+                      "value": "partial"
+                    },
+                    {
+                      "key": "search",
+                      "value": "EXP-0001"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2026-07-01"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2026-07-31"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "single show expense data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/expenses/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "expenses",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete expenses",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/expenses/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "expenses",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -5163,6 +5570,53 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "check active or inactive logged in cashier session",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/cashier-sessions/has-active",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "cashier-sessions",
+                    "has-active"
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -5256,7 +5710,7 @@
           ]
         },
         {
-          "name": "User Sessions",
+          "name": "User Device Sessions",
           "item": [
             {
               "name": "show all sessions",
@@ -5773,6 +6227,1706 @@
                     "v1",
                     "admin",
                     "site-settings"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Offer and Promotions",
+          "item": [
+            {
+              "name": "show all offers data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/offers",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "offers"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store offer data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Summer Sale 20%\",\n    \"description\": \"20% off beverages, capped at Rs. 200\",\n    \"application_type\": \"automatic\",\n    \"offer_type\": \"percentage\",\n    \"scope_type\": \"specific_categories\",\n    \"customer_segment\": \"all\",\n    \"value\": 20,\n    \"max_discount_amount\": 200,\n    \"is_stackable\": false,\n    \"priority\": 0,\n    \"starts_at\": \"2026-08-01T00:00:00\",\n    \"ends_at\": \"2026-08-31T23:59:59\",\n    \"status\": \"active\",\n    \"category_ids\": [\n        3\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/offers",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "offers"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "evaluate the offers",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    { \"product_id\": 3, \"quantity\": 2, \"unit_price\": 2999.99 }\n  ],\n  \"customer_id\": 8,\n  \"coupon_code\": \"SAVE10\"\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/ffers/evaluate",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "ffers",
+                    "evaluate"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "validate coupen",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"SAVE10\",\n  \"customer_id\": 8\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/offers/validate-coupon",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "offers",
+                    "validate-coupon"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "redeem offer",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order_id\": \"0198e2b1-1234-7abc-8def-000000000000\",\n  \"customer_id\": 8,\n  \"redemptions\": [\n    { \"offer_id\": 5, \"discount_amount\": 200.00 }\n  ]\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/offers/redeem",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "offers",
+                    "redeem"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update offer data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Summer Sale 25%\",\n    \"description\": \"25% off beverages, capped at Rs. 250\",\n    \"application_type\": \"automatic\",\n    \"offer_type\": \"percentage\",\n    \"scope_type\": \"specific_categories\",\n    \"customer_segment\": \"all\",\n    \"value\": 25,\n    \"max_discount_amount\": 250,\n    \"is_stackable\": false,\n    \"priority\": 0,\n    \"starts_at\": \"2026-08-01T00:00:00\",\n    \"ends_at\": \"2026-08-31T23:59:59\",\n    \"status\": \"active\",\n    \"category_ids\": [\n        3\n    ],\n    \"_method\": \"PUT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/offers/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "offers",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update offer status",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/offers/{id}/toggle-status",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "offers",
+                    "{id}",
+                    "toggle-status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete offer",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/offers/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "offers",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show offer redemption data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/offers/{id}/redemptions?pagination_limit=15",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "offers",
+                    "{id}",
+                    "redemptions"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination_limit",
+                      "value": "15"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single offer data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/offers/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "offers",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Purchase Order",
+          "item": [
+            {
+              "name": "show all purchase order data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-orders?status=ordered&payment_status=due&supplier_id=1&search=PO-2026&date_from=2026-08-01&date_to=2026-08-31&pagination_limit=15",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-orders"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "ordered"
+                    },
+                    {
+                      "key": "payment_status",
+                      "value": "due"
+                    },
+                    {
+                      "key": "supplier_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "search",
+                      "value": "PO-2026"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2026-08-01"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2026-08-31"
+                    },
+                    {
+                      "key": "pagination_limit",
+                      "value": "15"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store purchase order data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier_id\": 1,\n  \"ordered_date\": \"2026-08-03\",\n  \"expected_delivery_date\": \"2026-08-10\",\n  \"discount_amount\": 50,\n  \"vat_amount\": 100,\n  \"shipping_amount\": 25,\n  \"paid_amount\": 0,\n  \"note\": \"Monthly stock replenishment\",\n  \"items\": [\n    {\n      \"product_id\": 3,\n      \"product_variant_id\": null,\n      \"batch_id\": null,\n      \"warehouse_id\": 1,\n      \"quantity_ordered\": 50,\n      \"unit_cost\": 120.50,\n      \"discount_amount\": 0\n    },\n    {\n      \"product_id\": 7,\n      \"product_variant_id\": null,\n      \"batch_id\": null,\n      \"warehouse_id\": 1,\n      \"quantity_ordered\": 20,\n      \"unit_cost\": 300,\n      \"discount_amount\": 10\n    }\n  ]\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-orders",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-orders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single purchase order data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-orders/{{purchase_order_id}}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-orders",
+                    "{{purchase_order_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update purchase order data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier_id\": 1,\n  \"ordered_date\": \"2026-08-03\",\n  \"expected_delivery_date\": \"2026-08-12\",\n  \"shipping_amount\": 30,\n  \"vat_amount\": 100,\n  \"paid_amount\": 500,\n  \"note\": \"Updated delivery date, added partial payment\",\n  \"_method\":\"PUT\"\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-orders/{{purchase_order_id}}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-orders",
+                    "{{purchase_order_id}}"
+                  ]
+                },
+                "description": "Only works while the order is still draft — otherwise returns 422 \"Only draft purchase orders can be updated.\". Items can't be edited here (no items field). net_amount/payment_status are recalculated server-side."
+              },
+              "response": []
+            },
+            {
+              "name": "delete purchase order",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-orders/{{purchase_order_id}}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-orders",
+                    "{{purchase_order_id}}"
+                  ]
+                },
+                "description": "Only works while draft — otherwise 422 \"Only draft purchase orders can be deleted.\""
+              },
+              "response": []
+            },
+            {
+              "name": "confirm purchase order data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-orders/{{purchase_order_id}}/confirm",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-orders",
+                    "{{purchase_order_id}}",
+                    "confirm"
+                  ]
+                },
+                "description": "Moves draft → ordered. ⚠️ 422 \"Only draft purchase orders can be confirmed.\" if not draft."
+              },
+              "response": []
+            },
+            {
+              "name": "receive products of purchase order",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"received_date\": \"2026-08-10\",\n  \"items\": [\n    { \"id\": 15, \"quantity_received\": 50, \"warehouse_id\": 1 },\n    { \"id\": 16, \"quantity_received\": 10, \"warehouse_id\": 1 }\n  ]\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-orders/{{purchase_order_id}}/receive",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-orders",
+                    "{{purchase_order_id}}",
+                    "receive"
+                  ]
+                },
+                "description": "items[].id = the purchase_order_item id (not product_id) — get these from the items array in the show/confirm response. Must be ordered/partially_received (not draft, cancelled, or fully received). warehouse_id optional if already set on the line. Status auto-becomes received once every line's quantity_received >= quantity_ordered, else partially_received."
+              },
+              "response": []
+            },
+            {
+              "name": "cancel purchase order",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-orders/{{purchase_order_id}}/cancel",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-orders",
+                    "{{purchase_order_id}}",
+                    "cancel"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "purchase order payment",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 250.00\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-orders/{{purchase_order_id}}/payments",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-orders",
+                    "{{purchase_order_id}}",
+                    "payments"
+                  ]
+                },
+                "description": "⚠️ Rejected (422) if the order is draft, cancelled, already paid, or if amount pushes paid_amount above net_amount."
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Purchase Return",
+          "item": [
+            {
+              "name": "show all purchase return data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-returns?status=completed&supplier_id=1&search=PR-000&date_from=2026-08-01&date_to=2026-08-31&pagination_limit=15",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-returns"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "completed"
+                    },
+                    {
+                      "key": "supplier_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "search",
+                      "value": "PR-000"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2026-08-01"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2026-08-31"
+                    },
+                    {
+                      "key": "pagination_limit",
+                      "value": "15"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store purchase return data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"purchase_order_id\": \"0198e2b1-1234-7abc-8def-000000000000\",\n  \"return_date\": \"2026-08-05\",\n  \"note\": \"Damaged units found on inspection\",\n  \"items\": [\n    { \"purchase_order_item_id\": 15, \"quantity\": 2, \"warehouse_id\": 1 },\n    { \"purchase_order_item_id\": 16, \"quantity\": 1, \"warehouse_id\": 1 }\n  ]\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-returns",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-returns"
+                  ]
+                },
+                "description": "Notes:\n\npurchase_order_id is the PO's UUID — the PO must be received or partially_received (⚠️ 422 otherwise).\nitems[].purchase_order_item_id = the purchase_order_item id (same ids used in /purchase-orders/{id}/receive), not product_id.\nquantity can't exceed that line's quantity_received minus anything already returned in a completed return (⚠️ 422 \"Cannot return X units... Max returnable: Y.\").\nwarehouse_id optional — defaults to the PO item's warehouse; stock is deducted from there if inventory exists for that product/variant/batch combo."
+              },
+              "response": []
+            },
+            {
+              "name": "single show purchase return data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-returns/{{purchase_return_id}}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-returns",
+                    "{{purchase_return_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "cancel purchase return",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/purchase-returns/{{purchase_return_id}}/cancel ",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "purchase-returns",
+                    "{{purchase_return_id}}",
+                    "cancel "
+                  ]
+                },
+                "description": "Reverses the return — adds the returned stock back and sets status: \"cancelled\". ⚠️ 422 \"Purchase return is already cancelled.\" if already cancelled."
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Sales Return",
+          "item": [
+            {
+              "name": "show all sales return data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/sale-returns?status=completed&customer_id=8&search=SR-000&date_from=2026-08-01&date_to=2026-08-31&pagination_limit=15",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "sale-returns"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "completed"
+                    },
+                    {
+                      "key": "customer_id",
+                      "value": "8"
+                    },
+                    {
+                      "key": "search",
+                      "value": "SR-000"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2026-08-01"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2026-08-31"
+                    },
+                    {
+                      "key": "pagination_limit",
+                      "value": "15"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store sales return data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"order_id\": \"0198e2b1-1234-7abc-8def-000000000000\",\n  \"refund_type\": \"cash_refund\",\n  \"return_date\": \"2026-08-03\",\n  \"note\": \"Customer returned wrong size\",\n  \"items\": [\n    { \"order_item_id\": 22, \"quantity\": 1, \"warehouse_id\": 1 },\n    { \"order_item_id\": 23, \"quantity\": 2, \"warehouse_id\": 1 }\n  ]\n}\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/sale-returns",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "sale-returns"
+                  ]
+                },
+                "description": "Notes:\n\nrefund_type must be one of cash_refund | store_credit | exchange.\norder_id must belong to an order that's confirmed, paid, completed, partially_refunded, or refunded (⚠️ 422 otherwise).\nitems[].order_item_id = the order_item id, not product_id.\nquantity can't exceed that line's ordered quantity minus anything already returned in a completed return (⚠️ 422 \"Cannot return X units... Max returnable: Y.\").\nwarehouse_id optional — defaults to the order item's warehouse; stock is restocked there if provided (unlike purchase returns, this doesn't require existing inventory rows — it always adds stock when a warehouse is resolved).\nOn success this also updates the parent order's payment_status/status to refunded or partially_refunded and writes a refund OrderPayment record."
+              },
+              "response": []
+            },
+            {
+              "name": "show single sales return data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/sale-returns/{{sale_return_id}}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "sale-returns",
+                    "{{sale_return_id}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "cancel sales return",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/sale-returns/{{sale_return_id}}/cancel",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "sale-returns",
+                    "{{sale_return_id}}",
+                    "cancel"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "App Version",
+          "item": [
+            {
+              "name": "show app version data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/app-versions",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "app-versions"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Fiscal Year",
+          "item": [
+            {
+              "name": "show fiscal year data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-Tenant",
+                    "value": "nistrax",
+                    "type": "text"
+                  },
+                  {
+                    "key": "x-branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/admin/fiscal-years",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "fiscal-years"
                   ]
                 }
               },
