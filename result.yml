@@ -36,6 +36,8 @@ tags:
   - name: Superadmin > Tenant Payment Method
   - name: Admin
   - name: Admin > Auth
+  - name: Admin > 2 Factor Authentication (2FA)
+  - name: Admin > Passkeys (Biometric and Face Login)
   - name: Admin > Units
   - name: Admin > Category
   - name: Admin > Products
@@ -59,6 +61,7 @@ tags:
   - name: Admin > Sales Return
   - name: Admin > App Version
   - name: Admin > Fiscal Year
+  - name: Admin > Loyalty Points
   - name: Website
   - name: Website > Package
   - name: Website > Blog
@@ -779,6 +782,427 @@ paths:
                 password_confirmation: NewPass456
       security:
         - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/2fa/status:
+    get:
+      tags:
+        - Admin > 2 Factor Authentication (2FA)
+      summary: show 2fa status
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/2fa/enable:
+    post:
+      tags:
+        - Admin > 2 Factor Authentication (2FA)
+      summary: enable 2fa
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/2fa/confirm:
+    post:
+      tags:
+        - Admin > 2 Factor Authentication (2FA)
+      summary: 2fa confirm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                code: '123456'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/2fa/disable:
+    post:
+      tags:
+        - Admin > 2 Factor Authentication (2FA)
+      summary: 2fa disable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                password: your-current-password
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/2fa/recovery-codes/regenerate:
+    post:
+      tags:
+        - Admin > 2 Factor Authentication (2FA)
+      summary: generate 2fa recovery code
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                password: your-current-password
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/auth/login/two-factor:
+    post:
+      tags:
+        - Admin > 2 Factor Authentication (2FA)
+      summary: login 2 factor challenge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                challenge_token: the-challenge-token-from-login-response
+                code: '123456'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/passkeys:
+    get:
+      tags:
+        - Admin > Passkeys (Biometric and Face Login)
+      summary: show passkey
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/passkeys/{passkey}:
+    delete:
+      tags:
+        - Admin > Passkeys (Biometric and Face Login)
+      summary: delete passkeys
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: passkey
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/passkeys/register/options:
+    post:
+      tags:
+        - Admin > Passkeys (Biometric and Face Login)
+      summary: passkeys register options
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/passkeys/register:
+    post:
+      tags:
+        - Admin > Passkeys (Biometric and Face Login)
+      summary: register passkeys
+      description: >-
+        credential is exactly what navigator.credentials.create() returns in the
+        browser — can't be hand-typed for a real pass.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                challenge_id: 9f1c2b3a-4d5e-4f60-8a1b-2c3d4e5f6a7b
+                name: MacBook Touch ID
+                credential:
+                  id: base64url-credential-id
+                  rawId: base64url-credential-id
+                  type: public-key
+                  response:
+                    clientDataJSON: base64url-...
+                    attestationObject: base64url-...
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/auth/login/passkey/options:
+    post:
+      tags:
+        - Admin > Passkeys (Biometric and Face Login)
+      summary: login passkeys option
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: admin@example.com
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/auth/login/passkey:
+    post:
+      tags:
+        - Admin > Passkeys (Biometric and Face Login)
+      summary: login passkeys
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                challenge_id: 9f1c2b3a-4d5e-4f60-8a1b-2c3d4e5f6a7b
+                credential:
+                  id: base64url-credential-id
+                  rawId: base64url-credential-id
+                  type: public-key
+                  response:
+                    clientDataJSON: base64url-...
+                    authenticatorData: base64url-...
+                    signature: base64url-...
+                    userHandle: base64url-...
+      security:
+        - noauthAuth: []
       parameters:
         - name: Accept
           in: header
@@ -5051,6 +5475,234 @@ paths:
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin//loyalty/settings:
+    get:
+      tags:
+        - Admin > Loyalty Points
+      summary: show loyalty setting data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/loyalty/settings:
+    get:
+      tags:
+        - Admin > Loyalty Points
+      summary: update loyalty point data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/loyalty/earn:
+    post:
+      tags:
+        - Admin > Loyalty Points
+      summary: earn loyalty points
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                order_id: 9f1c2b3a-4d5e-4f60-8a1b-2c3d4e5f6a7b
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/loyalty/redeem:
+    post:
+      tags:
+        - Admin > Loyalty Points
+      summary: redeem loyalty point
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                customer_id: 1
+                points: 50
+                order_id: 9f1c2b3a-4d5e-4f60-8a1b-2c3d4e5f6a7b
+                description: Redeemed at checkout
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/loyalty/adjust:
+    get:
+      tags:
+        - Admin > Loyalty Points
+      summary: adjust loyalty point
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/customers/{id}/loyalty/balance:
+    get:
+      tags:
+        - Admin > Loyalty Points
+      summary: check loyalty balance
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/admin/customers/{id}/loyalty/transactions:
+    get:
+      tags:
+        - Admin > Loyalty Points
+      summary: show all loyalty point transaction
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: X-Tenant
+          in: header
+          schema:
+            type: string
+          example: nistrax
+        - name: x-branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '15'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
